@@ -17,6 +17,10 @@ class PostCommentsController < ApplicationController
   def post_comment_params
     params.require(:post_comment).permit(:comment)
   end
-    
+
+
+
+#"誰をフォローするのかURLでわかるようしましょう   だれをフォローするか(@userが誰なのか)をアクション内に定義する必要があります。"
+       
 
 end

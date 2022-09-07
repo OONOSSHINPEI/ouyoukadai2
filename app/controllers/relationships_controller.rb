@@ -1,25 +1,17 @@
 class RelationshipsController < ApplicationController
     
   def create
-    following = current_user.follow(@user)
-    if following.save
-      flash[:success] 
-      redirect_to @user
-    else
-      flash.now[:alert] 
-      redirect_to @user
-    end
+    @user = User.find(params[:user_id])
+    current_user.follow(@user)
+    redirect_to request.referer
+ 
   end
 
   def destroy
-    following = current_user.unfollow(@user)
-    if following.destroy
-      flash[:success] 
-      redirect_to @user
-    else
-      flash.now[:alert]
-      redirect_to @user
-    end
+    @user = User.find(params[:user_id])
+    current_user.unfollow(@user)
+    redirect_to request.referer
+    
   end
 
   private
